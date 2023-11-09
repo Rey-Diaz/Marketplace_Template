@@ -1,0 +1,13 @@
+/* src/components/Header/Header.module.css */
+
+.header {
+    /* Style your header here */
+    background-color: #333;
+    color: white;
+    padding: 1rem;
+  }
+  
+  nav {
+    /* Navigation bar styles */
+  }
+  
