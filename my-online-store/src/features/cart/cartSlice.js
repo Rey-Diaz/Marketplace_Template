@@ -22,10 +22,27 @@ export const cartSlice = createSlice({
           state.items.push({ ...action.payload, quantity: 1 });
       }
     },
-    // Add other reducers like removeFromCart, updateQuantity, clearCart, etc.
+    removeFromCart: (state, action) => {
+      const index = state.items.findIndex((item) => item.id === action.payload.id);
+      if (index !== -1) {
+        state.items.splice(index, 1);
+      }
+    },
+    updateQuantity: (state, action) => {
+      const item = state.items.find((item) => item.id === action.payload.id);
+      if (item) {
+        item.quantity = action.payload.quantity;
+      }
+    },
+    clearCart: (state) => {
+      state.items = [];
+    },
+    // Add other reducers as needed
   },
+  // extraReducers if you have any
 });
 
-export const { addToCart } = cartSlice.actions;
+export const { addToCart, removeFromCart, updateQuantity, clearCart } = cartSlice.actions;
 
 export default cartSlice.reducer;
+ 
