@@ -7,10 +7,10 @@ const initialState = {
   items: [
     // Populate with any initial product data or leave empty to fetch from an API
     {
-      id: '1',
-      name: 'Product 1',
-      description: 'Description for product 1',
-      price: 100,
+      id: '0',
+      name: 'Product 0',
+      description: 'Description for product 0',
+      price: 0,
       // image: 'path-to-product-1-image.jpg'
     },
     // ... more products
