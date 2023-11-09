@@ -7,6 +7,8 @@ const Header = () => {
         <header className={styles.header}>
         <nav>
           <a href="/">Home</a>
+          <a href="/products">Products</a>
+          <a href="cart">Cart</a>
           {/* Add other links as needed */}
         </nav>
       </header>
