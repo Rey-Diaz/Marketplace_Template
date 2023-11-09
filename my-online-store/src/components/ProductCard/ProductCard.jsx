@@ -3,12 +3,24 @@
 import { Link } from 'react-router-dom';
 import styles from './ProductCard.module.css';
 import PropTypes from 'prop-types'; // Make sure to import PropTypes
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../../features/cart/cartSlice';
+
+
 
 const ProductCard = ({ product }) => {
+  
+  const dispatch = useDispatch();
+
+  const handleAddToCart = () => {
+    dispatch(addToCart(product));
+  };
+
   return (
     <div className={styles.card}>
       <img className={styles.cardImage} src={product.image} alt={product.name} />
       <Link to={`/products/${product.id}`}>View Details</Link>
+      <button onClick={handleAddToCart}>Add to Cart</button>
       {/* ... rest of the component */}
     </div>
   );
