@@ -1,0 +1,80 @@
+/* Home.module.css */
+.section {
+    margin: 20px 0;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #f8f9fa;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.sectionHeader {
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.carouselContainer {
+    position: relative;
+    padding: 15px;
+    margin: auto;
+    max-width: 800px;
+}
+
+.categorySection {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.categoryItem {
+    flex: 0 0 30%;
+    margin: 10px;
+    padding: 15px;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.subCategory {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.subCategoryItem {
+    margin: 5px 0;
+    padding: 5px 10px;
+    background-color: #e9ecef;
+    border-radius: 15px;
+    font-size: 14px;
+}
+
+/* Additional styling for responsiveness and interactivity */
+@media (max-width: 768px) {
+    .categorySection {
+        flex-direction: column;
+        align-items: center;
+    }
+    .categoryItem {
+        flex-basis: 80%;
+    }
+}
+
+/* Hover effects for interactive elements */
+.categoryItem:hover, .subCategoryItem:hover {
+    background-color: #dae0e5;
+    cursor: pointer;
+}
+
+
+h1 {
+    text-align: center; /* Horizontally centers the text */
+    margin-top: 20px; /* Adds space at the top */
+    font-size: 32px; /* Adjusts the size of the title */
+    color: #333; /* Sets the color of the title */
+}

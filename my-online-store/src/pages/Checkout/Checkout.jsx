@@ -6,6 +6,7 @@ import { Elements } from '@stripe/react-stripe-js';
 import stripePromise from '../../stripe.js';
 
 import PaymentForm from '../../components/PaymentForm.jsx';
+import './Checkout.module.css'; // Import the CSS file for styling
 
 const Checkout = () => {
   const cartItems = useSelector((state) => state.cart.items);
@@ -33,11 +34,15 @@ const Checkout = () => {
   };
 
   if (cartItems.length === 0) {
-    return <div>Your cart is empty.</div>;
+    return (
+      <div className="empty-cart">
+        <p>Your cart is empty.</p>
+      </div>
+    );
   }
 
   return (
-    <div>
+    <div className="container">
       <h1>Checkout</h1>
       <form onSubmit={handleSubmit}>
         <div>
@@ -95,13 +100,13 @@ const Checkout = () => {
             />
           </label>
         </div>
-        <button type="submit">Proceed to Payment</button>
+        <button type="submit" className="checkout-button">
+          Proceed to Payment
+        </button>
       </form>
       <Elements stripe={stripePromise}>
         <PaymentForm />
       </Elements>
-      
-
     </div>
   );
 };

@@ -1,13 +1,79 @@
-/* src/components/Header/Header.module.css */
+/* Enhanced styles for Header.module.css */
 
 .header {
-    /* Style your header here */
-    background-color: #333;
-    color: white;
-    padding: 1rem;
+  background-color: #333;  /* Consider using a brand-specific color */
+  color: white;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between; /* Aligns items with space in between */
+  align-items: center;
+}
+
+.storeName {
+  justify-content: space-between;
+}
+
+.hamburgerMenu {
+  cursor: pointer;
+  font-size: 24px; /* Adjust size as needed */
+  user-select: none; /* Prevents text selection */
+  margin-right: 20px; /* Spacing from the navigation links */
+}
+
+nav {
+  display: flex;
+  gap: 1rem; /* Adds space between navigation items */
+}
+
+nav a {
+  color: white; /* Link color */
+  text-decoration: none; /* Removes underline */
+  font-weight: bold; /* Makes text bold */
+  transition: color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+nav a:hover {
+  color: #ffcc00; /* Change to a color that matches your brand */
+}
+
+.authButtons {
+  display: flex; /* Aligns buttons next to each other */
+}
+
+.authButtons button {
+  background-color: #4CAF50; /* Green background for buttons */
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  margin-left: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.authButtons button:hover {
+  background-color: #45a049; /* Darker shade on hover */
+}
+
+/* Responsive design adjustments */
+@media (max-width: 768px) {
+  .header {
+      flex-direction: column;
+      align-items: flex-start;
   }
-  
+
   nav {
-    /* Navigation bar styles */
+      width: 100%;
+      justify-content: space-between;
   }
-  
+
+  .hamburgerMenu {
+      margin-right: 0; /* Removes margin in responsive mode */
+  }
+
+  .authButtons {
+      width: 100%; /* Full width for buttons in responsive mode */
+      justify-content: space-between;
+      margin-top: 10px; /* Adds space above the buttons */
+  }
+}
