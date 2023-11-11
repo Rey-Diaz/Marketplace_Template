@@ -1,0 +1,29 @@
+/* src/pages/ProductList/ProductList.css */
+
+.productgrid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Center the items horizontally */
+}
+
+.productcard {
+  flex: 1; /* Make each item take up equal space */
+  border: 1px solid #ddd;
+  padding: 20px;
+  text-align: center;
+  /* Add other styling for your product cards here */
+  max-width: 300px; /* Set a maximum width for the cards */
+  margin: 0 10px; /* Add horizontal margin to create spacing between cards */
+}
+
+/* Media query for adjusting the spacing at different screen sizes */
+@media screen and (max-width: 768px) {
+  .productgrid {
+    flex-direction: column; /* Stack cards vertically on smaller screens */
+  }
+
+  .productcard {
+    flex: 1; /* Make each card take up equal space vertically */
+    margin: 10px 0; /* Add vertical margin to create spacing between rows */
+  }
+}

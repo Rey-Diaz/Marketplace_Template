@@ -1,42 +1,68 @@
-// src/components/ProductCard/ProductCard.jsx
-
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import styles from './ProductCard.module.css';
+import { motion } from 'framer-motion';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../features/cart/cartSlice';
-import { useState } from 'react';
-import { FaInfoCircle } from 'react-icons/fa'; // Import the FontAwesome icon
+import styles from './ProductCard.module.css';
 
 const ProductCard = ({ product }) => {
   const dispatch = useDispatch();
-  const [isFlipped, setIsFlipped] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
 
-  const handleAddToCart = () => {
+  const handleAddToCart = (event) => {
+    event.stopPropagation(); // Prevent the card expansion when adding to cart
     dispatch(addToCart(product));
   };
 
   const handleCardClick = () => {
-    setIsFlipped(!isFlipped);
+    setIsExpanded(!isExpanded);
+  };
+
+  const cardVariants = {
+    initial: {
+      scale: 1,
+      position: 'relative', // Reset position to relative
+    },
+    expanded: {
+      scale: 1.5,
+      position: 'fixed', // Set position to fixed when expanded
+      top: '50%', // Center vertically
+      left: '50%', // Center horizontally
+      transform: 'translate(-50%, -50%)', // Center the card
+      zIndex: 1,
+      transition: {
+        type: 'spring',
+        stiffness: 260,
+        damping: 20
+      }
+    }
   };
 
   return (
-    <div className={`${styles.card} ${isFlipped ? styles.flipped : ''}`} onClick={handleCardClick}>
-      <div className={`${styles['card-inner']}`}>
-        {/* Icon to flip the card */}
-        <FaInfoCircle className={styles['card-icon']} onClick={handleCardClick} />
-
-        <div className={`${styles['card-face']} ${styles['card-front']}`}>
+    <motion.div className={styles.card}
+      onClick={handleCardClick}
+      variants={cardVariants}
+      initial="initial"
+      animate={isExpanded ? "expanded" : "initial"}
+      layout>
+      <div className={styles.cardInner}>
+        <div className={styles.cardFront}>
+          {/* Front content */}
           <img className={styles.cardImage} src={product.image} alt={product.name} />
-          <Link to={`/products/${product.id}`}>View Details</Link>
-          <button onClick={handleAddToCart}>Add to Cart</button>
+          <h3 className={styles.cardTitle}>{product.name}</h3>
+          <p className={styles.cardPrice}>${product.price}</p>
         </div>
 
-        <div className={`${styles['card-face']} ${styles['card-back']}`}>
-          <p className={styles['description']}>{product.description}</p>
+        <div className={styles.cardBack}>
+          {/* Back content */}
+          <h3 className={styles.cardTitle}>{product.name}</h3>
+          <p className={styles.description}>{product.description}</p>
+          <Link to={`/products/${product.id}`}>View Details</Link>
+          <button aria-label={`Add ${product.name} to cart`} onClick={handleAddToCart}>Add to Cart</button>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
