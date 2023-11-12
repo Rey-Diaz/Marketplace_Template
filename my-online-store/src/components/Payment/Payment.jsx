@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useStripe, useElements, CardElement } from '@stripe/react-stripe-js';
 import styles from './Payment.module.css'; // Import the CSS module for styling
 import axios from 'axios'; // axios to make calls to the backend
+import { useSelector } from 'react-redux';
 
 const Payment = () => {
   const [billingDetails, setBillingDetails] = useState({
@@ -15,6 +16,12 @@ const Payment = () => {
   });
   const stripe = useStripe();
   const elements = useElements();
+
+  // Access cart data from Redux store
+  const cart = useSelector((state) => state.cart.items);
+
+  // Calculate total amount
+  const totalAmount = cart.reduce((total, item) => total + item.price * item.quantity, 0);
 
   const handleInputChange = (event) => {
     setBillingDetails({ ...billingDetails, [event.target.name]: event.target.value });
@@ -53,7 +60,7 @@ const Payment = () => {
         const { data } = await axios.post('http://localhost:5000/create-payment-intent', {
           payment_method_id: paymentMethod.id,
           // Add any other required information here
-          //paymentAmount = 
+          amount : totalAmount
         });
   
         // Confirm the payment on the frontend
