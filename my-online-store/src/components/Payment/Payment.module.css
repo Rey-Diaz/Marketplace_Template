@@ -1,0 +1,65 @@
+/* Payment.module.css */
+
+/* Payment card container */
+
+  
+  /* Payment card header */
+  .paymentCardHeader {
+    background-color: #f5f5f5;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    font-weight: bold;
+    padding: 10px 0;
+    margin-bottom: 20px;
+  }
+  
+  /* Payment form container */
+  .paymentFormContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Payment form fields */
+  .paymentFormField {
+    margin-bottom: 15px;
+    width: 100%;
+    text-align: left;
+  }
+  
+  /* Payment form labels */
+  .paymentLabel {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  /* Payment form inputs */
+  .paymentInput {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  /* Payment button */
+  .paymentButton {
+    background-color: #666;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    width: 100%;
+    max-width: 200px;
+    margin-top: 20px;
+  }
+  
+  /* Payment button hover effect */
+  .paymentButton:hover {
+    background-color: #333;
+  }
+  

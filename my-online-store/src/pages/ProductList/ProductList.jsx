@@ -1,30 +1,59 @@
-// src/pages/ProductList/ProductList.jsx
-
-import ProductCard from '../../components/ProductCard/ProductCard';
-import './ProductList.module.css'; // Import the CSS file
+import { useState } from 'react';
+import ProductCard from '../../components/ProductCard/ProductCard'; // Update the path as needed
+import ExpandedProductCard from '../../components/ExpandedProductCard/ExpandedProductCard'; // Update the path as needed
+import { AnimatePresence, motion } from 'framer-motion';
+import styles from './ProductList.module.css';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../../features/cart/cartSlice'; // Update the path to your cartSlice
 
 const ProductList = () => {
-  const products = [
-    // Example product data
-    { id: 1, name: 'Product 1', description: 'Description for product 1', price: 100, image: '/path-to-product-1-image.jpg' },
-    { id: 2, name: 'Product 2', description: 'Description for product 2', price: 150, image: '/path-to-product-2-image.jpg' },
-    { id: 3, name: 'Product 3', description: 'Description for product 3', price: 75, image: '/path-to-product-3-image.jpg' },
-    { id: 4, name: 'Product 4', description: 'Description for product 4', price: 120, image: '/path-to-product-4-image.jpg' },
-    { id: 5, name: 'Product 5', description: 'Description for product 5', price: 90, image: '/path-to-product-5-image.jpg' },
-    { id: 6, name: 'Product 6', description: 'Description for product 6', price: 200, image: '/path-to-product-6-image.jpg' },
-    // ... more products
-  ];
+  const [expandedProduct, setExpandedProduct] = useState(null);
+  const dispatch = useDispatch();
+
+  const handleAddToCart = (product) => {
+    dispatch(addToCart(product));
+    setExpandedProduct(null); // Close the expanded view on adding to cart (optional)
+  };
+
+  // Generate 25 sample products
+  const products = Array.from({ length: 25 }, (_, index) => ({
+    id: index + 1,
+    name: `Product ${index + 1}`,
+    description: `Description for product ${index + 1}`,
+    price: (index + 1) * 10,
+    image: `https://via.placeholder.com/150`
+  }));
 
   return (
-    <div>
-      <h1>Products</h1>
-      <div className="product-grid"> {/* Apply the CSS class to the container */}
-        {products.map((product) => (
-          <div key={product.id} className="product-card"> {/* Apply the CSS class to each card */}
-            <ProductCard product={product} />
-          </div>
-        ))}
-      </div>
+    <div className={styles.productList}>
+      {products.map(product => (
+        <ProductCard 
+          key={product.id}
+          product={product}
+          onClick={() => setExpandedProduct(product)}
+          onAddToCart={() => handleAddToCart(product)} // Pass handleAddToCart to ProductCard
+        />
+      ))}
+
+      <AnimatePresence>
+        {expandedProduct && (
+          <motion.div 
+            className={styles.backdrop}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setExpandedProduct(null)}
+          >
+            <div onClick={(e) => e.stopPropagation()}>
+              <ExpandedProductCard 
+                product={expandedProduct}
+                onAddToCart={() => handleAddToCart(expandedProduct)}
+                onClick={() => setExpandedProduct(null)}
+              />
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

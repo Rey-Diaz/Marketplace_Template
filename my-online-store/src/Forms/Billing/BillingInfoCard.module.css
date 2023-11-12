@@ -1,0 +1,26 @@
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); /* Add shadow for depth */
+    transition: 0.3s;
+    border-radius: 5px; /* Rounded corners for the card */
+    background-color: white; /* Card background color */
+    max-width: 400px;
+    margin: auto;
+}
+
+.cardHeader {
+    padding: 10px 20px;
+    background-color: #f5f5f5; /* Light gray background for the header */
+    border-top-left-radius: 5px; /* Rounded top corners */
+    border-top-right-radius: 5px;
+    font-weight: bold;
+    border-bottom: 1px solid #ddd; /* Separator line */
+}
+
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+/* If there are any specific styles needed for the PaymentForm, 
+   they can be added here. */
