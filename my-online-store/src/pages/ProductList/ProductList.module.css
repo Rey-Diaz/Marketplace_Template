@@ -1,0 +1,32 @@
+/* src/pages/ProductList/ProductList.css */
+
+.productList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Increase the minimum column width */
+  gap: 30px; /* Increase the gap to create more spacing between grid items */
+  justify-content: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.productcard {
+  flex: 1;
+  border: 1px solid #ddd;
+  padding: 20px;
+  text-align: center;
+  max-width: 300px;
+  margin: 0 auto 30px; /* Center the cards horizontally within their grid cells and add more bottom margin */
+}
+
+/* Media query for adjusting the spacing at different screen sizes */
+@media screen and (max-width: 768px) {
+  .productList {
+    flex-direction: column;
+  }
+
+  .productcard {
+    flex: 1;
+    margin: 10px auto 20px; /* Center the cards horizontally within their grid cells and add more bottom margin */
+  }
+}
