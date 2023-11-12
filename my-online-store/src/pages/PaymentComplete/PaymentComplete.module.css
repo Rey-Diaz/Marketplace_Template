@@ -1,0 +1,40 @@
+.paymentCompleteContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full height of the viewport */
+    background-color: #eaffea; /* Light green background */
+}
+
+.card {
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #f6fff6; /* Slightly lighter green for the card */
+    text-align: center;
+}
+
+.card h1 {
+    color: #008000; /* Darker green for the header */
+}
+
+.card p,
+.card a {
+    color: #006400; /* Even darker green for text and link */
+}
+
+.card a {
+    padding: 10px 20px;
+    background-color: #eaffea; /* Light green background for the button */
+    border-radius: 5px;
+    text-decoration: none; /* Remove underline */
+    border: 1px solid #008000; /* Green border */
+    display: inline-block; /* Align properly with text */
+    margin-top: 10px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.card a:hover {
+    background-color: #008000; /* Darker green on hover */
+    color: #ffffff; /* White text on hover */
+}
