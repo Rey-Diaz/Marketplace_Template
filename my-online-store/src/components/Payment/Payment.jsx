@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useStripe, useElements, CardElement } from '@stripe/react-stripe-js';
 import styles from './Payment.module.css'; // Import the CSS module for styling
+import axios from 'axios'; // axios to make calls to the backend
 
 const Payment = () => {
   const [billingDetails, setBillingDetails] = useState({
@@ -47,6 +48,30 @@ const Payment = () => {
     } else {
       console.log('[PaymentMethod]', paymentMethod);
       // Here you would send the paymentMethod.id to your backend to create a charge...
+      try {
+        // Send the paymentMethod.id to the backend
+        const { data } = await axios.post('http://localhost:5000/create-payment-intent', {
+          payment_method_id: paymentMethod.id,
+          // Add any other required information here
+          //paymentAmount = 
+        });
+  
+        // Confirm the payment on the frontend
+        const { paymentIntent, confirmError } = await stripe.confirmCardPayment(data.clientSecret, {
+          payment_method: paymentMethod.id,
+        });
+  
+        if (confirmError) {
+          console.log('[confirmError]', confirmError);
+          // Optionally, handle errors here (e.g., showing an error message to the user)
+        } else {
+          console.log('[PaymentIntent]', paymentIntent);
+          // Here, you might want to navigate the user to a success page or show a success message
+        }
+      } catch (err) {
+        console.error("Error making the API call to the backend:", err);
+        // Optionally, handle errors here (e.g., showing an error message to the user)
+      }
     }
   };
 
