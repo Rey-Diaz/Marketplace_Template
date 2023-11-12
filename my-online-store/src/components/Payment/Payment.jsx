@@ -1,8 +1,10 @@
+// Import necessary dependencies and actions
 import { useState } from 'react';
 import { useStripe, useElements, CardElement } from '@stripe/react-stripe-js';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux'; // Import useDispatch
+import { clearCart } from '../../features/cart/cartSlice'; // Import the clearCart action
 import styles from './Payment.module.css';
 
 const Payment = () => {
@@ -16,9 +18,10 @@ const Payment = () => {
   const stripe = useStripe();
   const elements = useElements();
   const navigate = useNavigate();
-
   const cart = useSelector((state) => state.cart.items);
   const totalAmount = cart.reduce((total, item) => total + item.price * item.quantity, 0);
+
+  const dispatch = useDispatch(); // Initialize dispatch
 
   const handleInputChange = (event) => {
     setBillingDetails({ ...billingDetails, [event.target.name]: event.target.value });
@@ -28,7 +31,6 @@ const Payment = () => {
     event.preventDefault();
 
     if (!stripe || !elements) {
-      // Stripe.js has not loaded yet.
       return;
     }
 
@@ -68,10 +70,11 @@ const Payment = () => {
           navigate('/PaymentError');
         } else {
           console.log('[PaymentIntent]', paymentIntent);
+          dispatch(clearCart()); // Dispatch the clearCart action to reset the cart
           navigate('/PaymentComplete');
         }
       } catch (err) {
-        console.error("Error making the API call to the backend:", err);
+        console.error('Error making the API call to the backend:', err);
         navigate('/PaymentError');
       }
     }
