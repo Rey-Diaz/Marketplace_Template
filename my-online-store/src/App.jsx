@@ -10,6 +10,8 @@ import Cart from "./pages/Cart/Cart";
 import Checkout from "./pages/Checkout/Checkout";
 import Register from "./pages/Register/Register";
 import Login from "./pages/Login/Login";
+import PaymentComplete from "./pages/PaymentComplete/PaymentComplete";
+import PaymentError from "./pages/PaymentError/PaymentError";
 // ... other imports
 import styles from "./App.module.css";
 
@@ -30,6 +32,8 @@ function App() {
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/PaymentComplete" element={<PaymentComplete />} />
+            <Route path="/PaymentError" element={<PaymentError />} />
             {/* ... other routes */}
           </Routes>
         </div>
