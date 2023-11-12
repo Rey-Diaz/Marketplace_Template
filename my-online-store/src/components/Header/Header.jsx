@@ -1,8 +1,7 @@
-// src/components/Header/Header.jsx
-
 import { useState } from 'react';
 import styles from './Header.module.css';
-import SidePanel from './../SidePanel/SidePanel'; // Import the new component
+import { FaSignInAlt, FaUserPlus, FaShoppingCart } from 'react-icons/fa';
+import SidePanel from '../../components/SidePanel/SidePanel'; // Adjust the import path as needed
 
 const Header = () => {
     const [navVisible, setNavVisible] = useState(false);
@@ -16,12 +15,19 @@ const Header = () => {
             <div className={styles.hamburgerMenu} onClick={toggleNav}>
                 ☰
             </div>
-            <SidePanel isOpen={navVisible} onClose={toggleNav} />
             <div className={styles.storeName}>Your Store Name</div>
-            <div className={styles.authButtons}>
-                <button>Login</button>
-                <button>Register</button>
+            <div className={styles.rightSection}>
+                <button className={styles.authButton}>
+                    <FaSignInAlt /> Login
+                </button>
+                <button className={styles.authButton}>
+                    <FaUserPlus /> Register
+                </button>
+                <div className={styles.cartIcon}>
+                    <FaShoppingCart />
+                </div>
             </div>
+            <SidePanel isOpen={navVisible} onClose={toggleNav} />
         </header>
     );
 };
