@@ -1,7 +1,9 @@
 // src/components/PaymentForm.jsx
 
 import { useStripe, useElements, CardElement } from '@stripe/react-stripe-js';
-
+import CartSection from '../Forms/Cart/CartSection';
+import BillingForm from '../Forms/Billing/BillingForm';
+import ShippingForm from '../Forms//Shipping/ShippingForm';
 
 
 const PaymentForm = () => {
@@ -32,13 +34,19 @@ const PaymentForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <CardElement />
-      <button type="submit" disabled={!stripe}>
-        Pay
-      </button>
-    </form>
+    <div className="payment-container">
+      <BillingForm />
+      <ShippingForm />
+      <CartSection />
+      <form onSubmit={handleSubmit}>
+        <CardElement />
+        <button type="submit" disabled={!stripe}>
+          Pay
+        </button>
+      </form>
+    </div>
   );
 };
 
 export default PaymentForm;
+

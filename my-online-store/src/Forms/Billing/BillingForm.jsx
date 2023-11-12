@@ -1,14 +1,19 @@
 // src/components/BillingForm.jsx
-import { Elements } from '@stripe/react-stripe-js';
-import stripePromise from '../../stripe.js';
-import PaymentForm from './PaymentForm.jsx';
+
+
 
 const BillingForm = () => {
   return (
-    <div>
-      <Elements stripe={stripePromise}>
-        <PaymentForm />
-      </Elements>
+    <div className="payment-form">
+      <h2>Billing Information</h2>
+      {/* Add input fields for billing information (e.g., name, address, etc.) */}
+      <label htmlFor="billingName">Billing Name:</label>
+      <input type="text" id="billingName" />
+
+      <label htmlFor="billingAddress">Billing Address:</label>
+      <input type="text" id="billingAddress" />
+
+      {/* Add other billing information fields as needed */}
     </div>
   );
 };
