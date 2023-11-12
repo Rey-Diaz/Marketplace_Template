@@ -1,0 +1,39 @@
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px; /* Adjust the width as needed */
+    margin: auto;
+    padding: 20px;
+}
+
+.formField {
+    margin-bottom: 15px;
+}
+
+.label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Update the button style */
+.button {
+    background-color: #666; /* Dark gray for the button */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Add transitions for smooth hover effect */
+}
+
+.button:hover {
+    background-color: #333; /* Darker gray on hover */
+}

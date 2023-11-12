@@ -1,0 +1,31 @@
+.registerContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Full viewport height */
+}
+
+.card {
+    width: 100%;
+    max-width: 400px; /* Maximum width of the card */
+    margin: 0 auto; /* Center the card */
+    background-color: white;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Enhanced shadow for depth */
+    border-radius: 10px;
+    overflow: hidden; /* Ensures the border-radius is applied on child elements */
+}
+
+.cardHeader {
+    background-color: #f7f7f7; /* Light grey background for the header */
+    padding: 15px;
+    text-align: center;
+    font-size: 24px; /* Larger font size for the header */
+    font-weight: bold;
+    border-bottom: 1px solid #eaeaea; /* Subtle border for the header */
+    color: #333; /* Darker text color for contrast */
+}
+
+.cardBody {
+    padding: 20px;
+}
