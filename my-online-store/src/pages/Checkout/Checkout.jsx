@@ -2,17 +2,21 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Elements } from '@stripe/react-stripe-js';
 import stripePromise from '../../stripe.js';
-import { FaExchangeAlt } from 'react-icons/fa'; // Import the React Icons component
+import { FaExchangeAlt } from 'react-icons/fa';
 
 import CartSummaryCard from '../../Forms/Cart/CartSummaryCard.jsx';
 import ShippingInfoCard from '../../Forms/Shipping/ShippingInfoCard.jsx';
 import BillingInfoCard from '../../Forms/Billing/BillingInfoCard.jsx';
-import styles from './Checkout.module.css'; // Import the CSS module
+import styles from './Checkout.module.css';
 
 const Checkout = () => {
   const [showBillingInfo, setShowBillingInfo] = useState(false);
   const cartItems = useSelector((state) => state.cart.items);
   const total = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
+
+  const toggleBillingInfo = () => {
+    setShowBillingInfo(true);
+  };
 
   if (cartItems.length === 0) {
     return (
@@ -40,14 +44,14 @@ const Checkout = () => {
                   className={styles.switchButton}
                   onClick={() => setShowBillingInfo(!showBillingInfo)}
                 >
-                  <FaExchangeAlt /> {/* React Icon */}
+                  <FaExchangeAlt />
                 </button>
               </h2>
             </div>
             {showBillingInfo ? (
               <BillingInfoCard />
             ) : (
-              <ShippingInfoCard />
+              <ShippingInfoCard onSubmitted={toggleBillingInfo} />
             )}
           </div>
         </div>

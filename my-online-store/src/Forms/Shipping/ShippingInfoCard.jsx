@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import BillingInfoCard from '../Billing/BillingInfoCard'; // Import BillingInfoCard component
-import styles from './ShippingInfoCard.module.css'; // Make sure to create a corresponding CSS module
+import PropTypes from 'prop-types';
+import BillingInfoCard from '../Billing/BillingInfoCard';
+import styles from './ShippingInfoCard.module.css';
 
-const ShippingInfoCard = () => {
+const ShippingInfoCard = ({ onSubmitted }) => {
   const [formData, setFormData] = useState({
     name: '',
     address: '',
@@ -21,6 +22,7 @@ const ShippingInfoCard = () => {
     event.preventDefault();
     // Process shipping information
     setSubmitted(true); // On submission, display the billing info form
+    onSubmitted(); // Call the passed callback function to update parent state
   };
 
   if (submitted) {
@@ -29,7 +31,6 @@ const ShippingInfoCard = () => {
 
   return (
     <div className={styles.card}>
-      
       <form onSubmit={handleSubmit} className={styles.formContainer}>
         <div className={styles.formField}>
           <label className={styles.label}>Name</label>
@@ -85,6 +86,10 @@ const ShippingInfoCard = () => {
       </form>
     </div>
   );
+};
+
+ShippingInfoCard.propTypes = {
+  onSubmitted: PropTypes.func.isRequired,
 };
 
 export default ShippingInfoCard;
