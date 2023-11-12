@@ -15,11 +15,11 @@
 .cartItem {
     border-bottom: 1px solid #e1e1e1;
     padding: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 8px; /* Reduced margin between items */
 }
 
 .itemName {
-    font-size: 18px;
+    font-size: 16px; /* Smaller font size for product names */
     font-weight: bold;
 }
 

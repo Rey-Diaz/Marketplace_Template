@@ -3,14 +3,17 @@
 import PropTypes from 'prop-types';
 import styles from './CartSummaryCard.module.css';
 import { FaShoppingCart } from 'react-icons/fa'; // Import the cart icon
+import { Link } from 'react-router-dom'; // Import the Link component from react-router-dom
 
 const CartSummaryCard = ({ cartItems, total }) => {
   if (!cartItems || cartItems.length === 0) {
     return (
       <div className={styles.card}>
         <div className={styles.header}>
+          <Link to="/cart"> {/* Wrap the cart icon in a Link to /cart */}
+            <FaShoppingCart className={styles.cartIcon} />
+          </Link>
           <span>Cart</span>
-          <FaShoppingCart className={styles.cartIcon} />
         </div>
         <div className={`${styles.body} ${styles.emptyCart}`}>Your cart is empty.</div>
         <div className={styles.footer}>
@@ -24,8 +27,10 @@ const CartSummaryCard = ({ cartItems, total }) => {
   return (
     <div className={styles.card}>
       <div className={styles.header}>
-        <FaShoppingCart className={styles.cartIcon} />
         <span>Cart</span>
+        <Link to="/cart"> {/* Wrap the cart icon in a Link to /cart */}
+          <FaShoppingCart className={styles.cartIcon} />
+        </Link>
       </div>
       <div className={styles.middle}>
         <ul className={styles.itemList}>
