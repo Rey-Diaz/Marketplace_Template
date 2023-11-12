@@ -1,6 +1,6 @@
 
 import { useSelector, useDispatch } from 'react-redux';
-import { removeFromCart, updateQuantity, clearCart } from '../../features/cart/cartSlice';
+import { removeFromCart, updateQuantity} from '../../features/cart/cartSlice';
 import { useNavigate } from 'react-router-dom';
 import CartCard from '../../components/CartCard/CartCard'; // Import CartCard component
 import styles from './Cart.module.css'; // Import or define the CSS module for Cart
@@ -15,7 +15,7 @@ const Cart = () => {
   const totalPrice = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
 
   const handleCheckout = () => {
-      dispatch(clearCart());
+    
       navigate('/checkout');
   };
 
