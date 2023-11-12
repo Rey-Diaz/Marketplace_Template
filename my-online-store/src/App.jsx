@@ -8,6 +8,8 @@ import ProductList from "./pages/ProductList/ProductList";
 import Product from "./pages/Product/Product";
 import Cart from "./pages/Cart/Cart";
 import Checkout from "./pages/Checkout/Checkout";
+import Register from "./pages/Register/Register";
+import Login from "./pages/Login/Login";
 // ... other imports
 import styles from "./App.module.css";
 
@@ -26,6 +28,8 @@ function App() {
             <Route path="/products/:productId" element={<Product />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/checkout" element={<Checkout />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
             {/* ... other routes */}
           </Routes>
         </div>

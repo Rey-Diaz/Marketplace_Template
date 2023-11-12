@@ -27,28 +27,33 @@ const ProductList = () => {
   return (
     <div className={styles.productList}>
       {products.map(product => (
-        <ProductCard key={product.id} product={product} onClick={() => setExpandedProduct(product)} />
+        <ProductCard 
+          key={product.id}
+          product={product}
+          onClick={() => setExpandedProduct(product)}
+          onAddToCart={() => handleAddToCart(product)} // Pass handleAddToCart to ProductCard
+        />
       ))}
 
       <AnimatePresence>
-  {expandedProduct && (
-    <motion.div 
-      className={styles.backdrop}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      onClick={() => setExpandedProduct(null)}
-    >
-      <div onClick={(e) => e.stopPropagation()}>
-        <ExpandedProductCard 
-          product={expandedProduct} 
-          onAddToCart={() => handleAddToCart(expandedProduct)}
-          onClick={() => setExpandedProduct(null)} // Pass this function to close the card
-        />
-      </div>
-    </motion.div>
-  )}
-</AnimatePresence>
+        {expandedProduct && (
+          <motion.div 
+            className={styles.backdrop}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setExpandedProduct(null)}
+          >
+            <div onClick={(e) => e.stopPropagation()}>
+              <ExpandedProductCard 
+                product={expandedProduct}
+                onAddToCart={() => handleAddToCart(expandedProduct)}
+                onClick={() => setExpandedProduct(null)}
+              />
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

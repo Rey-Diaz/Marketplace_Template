@@ -1,0 +1,83 @@
+.cartCard {
+    width: 100%;
+    max-width: 600px;
+    margin: auto;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    height: 85vh;
+}
+
+.cardHeader, .cardFooter {
+    padding: 20px;
+    background-color: #f7f7f7;
+    text-align: center;
+}
+
+.cardBody {
+    overflow-y: auto;
+    flex-grow: 1;
+    padding: 20px;
+}
+
+.cartItem {
+    border-bottom: 1px solid #e1e1e1;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.cartCard {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto; /* Add some margin for spacing */
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Ensures child elements don't overflow */
+}
+
+.cardHeader, .cardFooter {
+    padding: 15px;
+    background-color: #f7f7f7;
+    text-align: center;
+}
+
+.cardBody {
+    overflow-y: auto; /* Allow scrolling for the body content */
+    flex-grow: 1; /* Take up available space */
+}
+
+/* ... Other styles ... */
+/* Update the "Go to Checkout" button */
+.checkoutButton {
+    padding: 10px 20px;
+    background-color: #111; /* Dark gray for the normal state */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.checkoutButton:hover {
+    background-color: #444; /* Darker gray on hover */
+}
+
+/* Update the "Remove" button */
+.removeButton {
+    padding: 5px 10px;
+    background-color: #333; /* Dark gray for the normal state */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.removeButton:hover {
+    background-color: #666; /* Darker gray on hover */
+}

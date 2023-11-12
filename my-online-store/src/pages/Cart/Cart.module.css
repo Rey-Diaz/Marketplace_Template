@@ -1,0 +1,67 @@
+.cartContainer {
+    width: 80%;
+    max-width: 800px;
+    margin: auto;
+  
+}
+
+.cartHeader {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.cartItem {
+    border-bottom: 1px solid #e1e1e1;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.itemName {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.itemDetails {
+    margin: 5px 0;
+}
+
+.quantityInput {
+    width: 50px;
+    margin-left: 10px;
+}
+
+.totalPrice {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.button {
+    background-color: #4CAF50; /* Green background */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin: 5px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #45a049; /* Darker shade on hover */
+}
+
+.clearCartButton {
+    background-color: #f44336; /* Red background for clear cart */
+}
+
+/* Additional styles for responsive layout and other elements */
+.cartContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
