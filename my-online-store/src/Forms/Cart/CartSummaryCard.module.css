@@ -1,0 +1,74 @@
+/* CartSummaryCard.module.css */
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  background-color: white;
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  
+  overflow: hidden; /* Hide overflowing content */
+}
+
+.header {
+  font-size: 16px; /* Standard text size for headers */
+  text-align: left; /* Align text to the left */
+  background-color: #f0f0f0; /* Darker header background */
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Align items horizontally */
+  padding: 10px 20px; /* Add padding to the header */
+  font-weight: bold;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  position: sticky; /* Sticky header */
+  top: 0;
+}
+
+.cartIcon {
+  margin-right: 10px;
+}
+
+.body {
+  flex-grow: 1;
+  overflow-y: auto; /* Enable vertical scrolling for the body */
+  padding: 10px;
+}
+
+.emptyCart {
+  color: #999;
+}
+
+.middle {
+  flex-grow: 1;
+  overflow-y: auto; /* Enable vertical scrolling for the middle section */
+  padding: 10px;
+}
+
+.itemList {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+}
+
+.itemList li {
+  margin-bottom: 8px;
+}
+
+.footer {
+  background-color: #f0f0f0; /* Darker footer background */
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  position: sticky; /* Sticky footer */
+  bottom: 0;
+}
+
+.totalLabel {
+  font-weight: bold;
+}
+
+/* ... Other styles ... */
