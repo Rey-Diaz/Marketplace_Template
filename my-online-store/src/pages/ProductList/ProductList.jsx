@@ -1,28 +1,34 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import ProductCard from '../../components/ProductCard/ProductCard'; // Update the path as needed
 import ExpandedProductCard from '../../components/ExpandedProductCard/ExpandedProductCard'; // Update the path as needed
 import { AnimatePresence, motion } from 'framer-motion';
 import styles from './ProductList.module.css';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../features/cart/cartSlice'; // Update the path to your cartSlice
+import ProductService from '../../utils/productService'; // Update the path as needed
 
 const ProductList = () => {
+  const [products, setProducts] = useState([]);
   const [expandedProduct, setExpandedProduct] = useState(null);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const fetchedProducts = await ProductService.getProducts();
+        setProducts(fetchedProducts);
+      } catch (error) {
+        console.error('Error fetching products:', error);
+      }
+    };
+
+    fetchProducts();
+  }, []);
 
   const handleAddToCart = (product) => {
     dispatch(addToCart(product));
     setExpandedProduct(null); // Close the expanded view on adding to cart (optional)
   };
-
-  // Generate 25 sample products
-  const products = Array.from({ length: 25 }, (_, index) => ({
-    id: index + 1,
-    name: `Product ${index + 1}`,
-    description: `Description for product ${index + 1}`,
-    price: (index + 1) * 10,
-    image: `https://via.placeholder.com/150`
-  }));
 
   return (
     <div className={styles.productList}>
