@@ -9,9 +9,10 @@ export const cartSlice = createSlice({
   },
   reducers: {
     addToCart: (state, action) => {
+      console.log("Adding to cart:", action.payload);
         // Find the index of the item in the cart
         const existingIndex = state.items.findIndex(
-          (item) => item.id === action.payload.id
+          (item) => item._id === action.payload.id
         );
   
         if (existingIndex >= 0) {
@@ -23,13 +24,13 @@ export const cartSlice = createSlice({
       }
     },
     removeFromCart: (state, action) => {
-      const index = state.items.findIndex((item) => item.id === action.payload.id);
+      const index = state.items.findIndex((item) => item._id === action.payload.id);
       if (index !== -1) {
         state.items.splice(index, 1);
       }
     },
     updateQuantity: (state, action) => {
-      const item = state.items.find((item) => item.id === action.payload.id);
+      const item = state.items.find((item) => item._id === action.payload.id);
       if (item) {
         item.quantity = action.payload.quantity;
       }

@@ -15,19 +15,19 @@ const CartCard = ({ onRemove, onUpdateQuantity, totalPrice, onCheckout }) => {
             <div className={styles.cardBody}>
                 {cartItems.length > 0 ? (
                     cartItems.map((item) => (
-                        <div key={item.id} className={styles.cartItem}>
+                        <div key={item._id} className={styles.cartItem}>
                             <h2>{item.name}</h2>
                             <p>Quantity: 
                                 <input 
                                     type="number" 
                                     value={item.quantity} 
-                                    onChange={(e) => onUpdateQuantity(item.id, parseInt(e.target.value))} 
+                                    onChange={(e) => onUpdateQuantity(item._id, parseInt(e.target.value))} 
                                     min="1" 
                                     className={styles.quantityInput}
                                 />
                             </p>
                             <p>Unit Price: ${item.price.toFixed(2)}</p>
-                            <button onClick={() => onRemove(item.id)} className={styles.removeButton}>Remove</button>
+                            <button onClick={() => onRemove(item._id)} className={styles.removeButton}>Remove</button>
                         </div>
                     ))
                 ) : (
