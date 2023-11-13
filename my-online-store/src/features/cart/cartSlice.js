@@ -9,9 +9,10 @@ export const cartSlice = createSlice({
   },
   reducers: {
     addToCart: (state, action) => {
+      console.log("Adding to cart:", action.payload);
         // Find the index of the item in the cart
         const existingIndex = state.items.findIndex(
-          (item) => item.id === action.payload.id
+          (item) => item._id === action.payload.id
         );
   
         if (existingIndex >= 0) {

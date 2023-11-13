@@ -15,7 +15,7 @@ const CartCard = ({ onRemove, onUpdateQuantity, totalPrice, onCheckout }) => {
             <div className={styles.cardBody}>
                 {cartItems.length > 0 ? (
                     cartItems.map((item) => (
-                        <div key={item.id} className={styles.cartItem}>
+                        <div key={item._id} className={styles.cartItem}>
                             <h2>{item.name}</h2>
                             <p>Quantity: 
                                 <input 
